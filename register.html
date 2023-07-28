@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVT - Movie Ticket Booking</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <script src="./assets/packs/jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+    <main class="register__container">
+        <div class="loading">
+            <div class="loader"></div>
+            <div class="loader2"></div>
+        </div>
+        <div class="register__box">
+            <h1 class="register__box-heading">Xin Chào</h1>
+            <div class="register__box-form">
+                <div class="form__group">
+                    <input id="form__fullname" type="text" placeholder="Nhập Tên... ( eg: Đào Đức Băng )">
+                    <span class="error__label"></span>
+                </div>
+                <div class="form__group">
+                    <input id="form__phonenumber" type="text" placeholder="Nhập SĐT... (eg: 0908675423)">
+                    <span class="error__label"></span>
+                </div>
+                <div class="form__group">
+                    <input id="form__email" type="text" placeholder="Nhập Mail... (eg: ...@gmail.com)">
+                    <span class="error__label"></span>
+                </div>
+                <div class="form__group">
+                    <input id="form__username" type="text" placeholder="Nhập Tài Khoản... (eg: ducbang02 )">
+                    <span class="error__label"></span>
+                </div>
+                <div class="form__group">
+                    <input id="form__password" type="password" placeholder="Nhập Mật Khẩu... (nhiều hơn 8 kí tự)">
+                    <span class="error__label"></span>
+                </div>
+            </div>
+            <button class="btn btn__register">Đăng Ký</button>
+            <div class="register__box-register">
+                <span>Bạn đã có tài khoản?</span>
+                <a href="login.html">Đăng nhập ngay</a>
+            </div>
+        </div>
+    </main>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/utils/Validate.js"></script>
+    <script>
+        Validate({
+            form: '.register__box-form',
+            rules: [
+                Validate.isRequire('#form__fullname'),
+                Validate.isRequire('#form__phonenumber'),
+                Validate.isPhoneNumber('#form__phonenumber'),
+                Validate.isRequire('#form__email'),
+                Validate.isEmail('#form__email'),
+                Validate.isRequire('#form__username'),
+                Validate.isRequire('#form__password'),
+                Validate.isValidPasswordLength('#form__password'),
+            ]
+        })
+    </script>
+</body>
+
+</html>

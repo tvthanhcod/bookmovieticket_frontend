@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVT - Movie Ticket Booking</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./assets/packs/jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header">
+                <ul class="header__nav">
+                    <li class="header__nav-item">
+                        <a href="buy-ticket.html">Mua vé</a>
+                    </li>
+                    <li class="header__nav-item"><a href="">Lịch Chiếu</a></li>
+                    <li class="header__nav-item">
+                        <p>Phim</p>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </li>
+                    <li class="header__nav-item">
+                        <p>Rạp</p>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </li>
+                </ul>
+                <div class="header__logo">
+                    <a href="index.html">TVT Movie</a>
+                </div>
+                <div class="header__search">
+                    <div class="header__search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" class="header__search-input" placeholder="Từ khóa tìm kiếm...">
+                </div>
+                <!-- <a href="#" class="header-help">
+                    <div class="">
+                        <i class="fa-solid fa-question"></i>
+                    </div>
+                    <p>Hỗ Trợ</p>
+                </a> -->
+                <div class="header__auth">
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <section class="slider__movie">
+            <div class="silder__movie-content">
+                <ul class="slider__movie-list">
+                </ul>
+            </div>
+            <ul class="slider__movie-dots">
+            </ul>
+        </section>
+        <section class="home__blog">
+            <aside class="home__blog-col-6">
+                <h2 class="home__blog-heading">Mới Cập Nhật</h2>
+                <ul class="home__blog-list">
+
+                </ul>
+                <button class="home__blog-more">Xem Thêm</button>
+            </aside>
+            <aside class="home__blog-col-4">
+                <h2 class="home__review-heading">Review</h2>
+                <ul class="home__review-list">
+
+                </ul>
+            </aside>
+        </section>
+    </main>
+    <footer>
+        <div class="container footer">
+            <div class="footer__logo">
+                TVT Movie
+            </div>
+            <div class="footer__company-info">
+                <h2>CÔNG TY TNHH TVT</h2>
+                <p>Địa Chỉ: 96 Định Công - Hoàng Mai - Hà Nội</p>
+                <ul class="footer__company-info-link">
+                    <a href="#">
+                        <li class="footer__company-info-link-item">Về Chúng Tôi</li>
+                    </a><a href="#">
+                        <li class="footer__company-info-link-item">Chính Sách & Thỏa Thuận</li>
+                    </a><a href="#">
+                        <li class="footer__company-info-link-item">Hỗ Trợ</li>
+                    </a><a href="#">
+                        <li class="footer__company-info-link-item">Liên Hệ</li>
+                    </a>
+                </ul>
+            </div>
+            <ul class="footer__partners">
+                <li class="footer__partner-item">
+                    <img src="https://cdn.moveek.com/bundles/ornweb/partners/beta-cineplex-v2.jpg" alt="">
+                </li>
+                <li class="footer__partner-item">
+                    <img src="https://cdn.moveek.com/bundles/ornweb/partners/cinestar.png" alt="">
+                </li>
+                <li class="footer__partner-item">
+                    <img src="https://cdn.moveek.com/bundles/ornweb/partners/mega-gs-cinemas.png" alt="">
+                </li>
+                <li class="footer__partner-item">
+                    <img src="https://cdn.moveek.com/bundles/ornweb/partners/cinemax.png" alt="">
+                </li>
+                <li class="footer__partner-item">
+                    <img src="https://cdn.moveek.com/bundles/ornweb/partners/foxpay-icon.png" alt="">
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script type="module" src="./assets/utils/loadCurrentUser.js"></script>
+    <script type="module" src="./assets/utils/callApiSecure.js"></script>
+    <script type="module" src="./assets/js/home.js"></script>
+</body>
+
+</html>

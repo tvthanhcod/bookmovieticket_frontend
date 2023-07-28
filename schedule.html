@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVT - Movie Ticket Booking</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./assets/packs/jquery-3.7.0.min.js"></script>
+</head>
+<html>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header">
+                <ul class="header__nav">
+                    <li class="header__nav-item">
+                        <a href="buy-ticket.html">Mua vé</a>
+                    </li>
+                    <li class="header__nav-item"><a href="">Lịch Chiếu</a></li>
+                    <li class="header__nav-item">
+                        <p>Phim</p>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </li>
+                    <li class="header__nav-item">
+                        <p>Rạp</p>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </li>
+                </ul>
+                <div class="header__logo">
+                    <a href="index.html">TVT Movie</a>
+                </div>
+                <div class="header__search">
+                    <div class="header__search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" class="header__search-input" placeholder="Từ khóa tìm kiếm...">
+                </div>
+                <!-- <a href="#" class="header-help">
+                        <div class="">
+                            <i class="fa-solid fa-question"></i>
+                        </div>
+                        <p>Hỗ Trợ</p>
+                    </a> -->
+                <div class="header__auth">
+                    <div class="">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="schedule__hero">
+            <p>Lịch Chiếu</p>
+            <p>Tìm lịch chiếu phim / rạp nhanh nhất với chỉ 1 bước!</p>
+        </section>
+        <section class="schedule__content main__content container">
+            <!-- <p class="main__content-heading">Mua Vé Theo Rạp</p> -->
+            <div class="main__content-container">
+                <div class="main__content-col-2 main__content-area">
+                    <ul class="main__content-area-list">
+                        <li class="main__content-col-2-item main__content-area-item">Khu Vực</li>
+                        <li class="main__content-col-2-item main__content-area-item" onclick="handleActiveArea(2)">
+                            <span>Hà Nội</span>
+                            <span>7</span>
+                        </li>
+                        <li class="main__content-col-2-item main__content-area-item">
+                            <span>Tp.Hồ Chí Minh</span>
+                            <span>9</span>
+                        </li>
+                        <li class="main__content-col-2-item main__content-area-item">
+                            <span>Hải Phòng</span>
+                            <span>3</span>
+                        </li>
+                        <li class="main__content-col-2-item main__content-area-item">
+                            <span>Đà Nẵng</span>
+                            <span>5</span>
+                        </li>
+                        <li class="main__content-col-2-item main__content-area-item">
+                            <span>Nha Trang</span>
+                            <span>5</span>
+                        </li>
+                        <li class="main__content-col-2-item main__content-area-item">
+                            <span>Vĩnh Phúc</span>
+                            <span>1</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="main__content-col-2 main__content-theater">
+                    <ul class="main__content-theater-list">
+                        <li class="main__content-col-2-item main__content-theater-item">Beta Cinemas</li>
+                        <li class="main__content-col-2-item main__content-theater-item">Beta Thanh Xuân</li>
+                        <li class="main__content-col-2-item main__content-theater-item">Beta Mỹ Đình</li>
+                        <li class="main__content-col-2-item main__content-theater-item">Beta Đan Phượng</li>
+                        <li class="main__content-col-2-item main__content-theater-item">Beta Giải Phóng</li>
+                    </ul>
+                </div>
+                <div class="main__content-col-6 main__content-showtime">
+                    <div class="main__content-showtime-date"></div>
+                    <div class="main__content-showtime-alert">
+                        <span>
+                            <i class="fa-solid fa-info"></i>
+                        </span>
+                        Nhấn vào suất chiếu để tiến hành mua vé
+                    </div>
+                    <ul class="main__content-showtime-list">
+                        <li class="main__content-showtime-item">
+                            <div class="main__content-showtime-item-thumbnail">
+                                <img src="https://cdn.moveek.com/storage/media/cache/mini/649bab02d4c40184390274.jpeg"
+                                    alt="">
+                            </div>
+                            <div class="main__content-showtime-item-option">
+                                <h3 class="main__content-showtime-item-name">
+                                    Thám Tử Lừng Danh Conan: Tàu Ngầm Sắt Màu Đen
+                                </h3>
+                                <p class="main__content-showtime-item-duration">Thời Lượng Phim: 1h50</p>
+                                <ul class="main__content-showtime-item-taglist">
+                                    <li class="main__content-showtime-item-tag">09:00</li>
+                                    <li class="main__content-showtime-item-tag">10:00</li>
+                                    <li class="main__content-showtime-item-tag">12:00</li>
+                                    <li class="main__content-showtime-item-tag">14:00</li>
+                                    <li class="main__content-showtime-item-tag">16:00</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="main__content-showtime-item">
+                            <div class="main__content-showtime-item-thumbnail">
+                                <img src="https://cdn.moveek.com/storage/media/cache/mini/649bab02d4c40184390274.jpeg"
+                                    alt="">
+                            </div>
+                            <div class="main__content-showtime-item-option">
+                                <h3 class="main__content-showtime-item-name">
+                                    Thám Tử Lừng Danh Conan: Tàu Ngầm Sắt Màu Đen
+                                </h3>
+                                <p class="main__content-showtime-item-duration">Thời Lượng Phim: 1h50</p>
+                                <ul class="main__content-showtime-item-taglist">
+                                    <li class="main__content-showtime-item-tag">09:00</li>
+                                    <li class="main__content-showtime-item-tag">10:00</li>
+                                    <li class="main__content-showtime-item-tag">12:00</li>
+                                    <li class="main__content-showtime-item-tag">14:00</li>
+                                    <li class="main__content-showtime-item-tag">16:00</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="main__content-showtime-item">
+                            <div class="main__content-showtime-item-thumbnail">
+                                <img src="https://cdn.moveek.com/storage/media/cache/mini/649bab02d4c40184390274.jpeg"
+                                    alt="">
+                            </div>
+                            <div class="main__content-showtime-item-option">
+                                <h3 class="main__content-showtime-item-name">
+                                    Thám Tử Lừng Danh Conan: Tàu Ngầm Sắt Màu Đen
+                                </h3>
+                                <p class="main__content-showtime-item-duration">Thời Lượng Phim: 1h50</p>
+                                <ul class="main__content-showtime-item-taglist">
+                                    <li class="main__content-showtime-item-tag">09:00</li>
+                                    <li class="main__content-showtime-item-tag">10:00</li>
+                                    <li class="main__content-showtime-item-tag">12:00</li>
+                                    <li class="main__content-showtime-item-tag">14:00</li>
+                                    <li class="main__content-showtime-item-tag">16:00</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="main__content-showtime-item">
+                            <div class="main__content-showtime-item-thumbnail">
+                                <img src="https://cdn.moveek.com/storage/media/cache/mini/649bab02d4c40184390274.jpeg"
+                                    alt="">
+                            </div>
+                            <div class="main__content-showtime-item-option">
+                                <h3 class="main__content-showtime-item-name">
+                                    Thám Tử Lừng Danh Conan: Tàu Ngầm Sắt Màu Đen
+                                </h3>
+                                <p class="main__content-showtime-item-duration">Thời Lượng Phim: 1h50</p>
+                                <ul class="main__content-showtime-item-taglist">
+                                    <li class="main__content-showtime-item-tag">09:00</li>
+                                    <li class="main__content-showtime-item-tag">10:00</li>
+                                    <li class="main__content-showtime-item-tag">12:00</li>
+                                    <li class="main__content-showtime-item-tag">14:00</li>
+                                    <li class="main__content-showtime-item-tag">16:00</li>
+                                    <li class="main__content-showtime-item-tag">09:00</li>
+                                    <li class="main__content-showtime-item-tag">10:00</li>
+                                    <li class="main__content-showtime-item-tag">12:00</li>
+                                    <li class="main__content-showtime-item-tag">14:00</li>
+                                    <li class="main__content-showtime-item-tag">16:00</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container footer">
+            <div class="footer__logo">
+                TVT Movie
+            </div>
+            <div class="footer__company-info">
+                <h2>CÔNG TY TNHH TVT</h2>
+                <p>Địa Chỉ: 96 Định Công - Hoàng Mai - Hà Nội</p>
+                <ul class="footer__company-info-link">
+                    <a href="#">
+                        <li class="footer__company-info-link-item">Về Chúng Tôi</li>
+                    </a><a href="#">
+                        <li class="footer__company-info-link-item">Chính Sách & Thỏa Thuận</li>
+                    </a><a href="#">
+                        <li class="footer__company-info-link-item">Hỗ Trợ</li>
+                    </a><a href="#">
+                        <li class="footer__company-info-link-item">Liên Hệ</li>
+                    </a>
+                </ul>
+            </div>
+            <ul class="footer__partners">
+                <li class="footer__partner-item">
+                    <img src="https://cdn.moveek.com/bundles/ornweb/partners/beta-cineplex-v2.jpg" alt="">
+                </li>
+                <li class="footer__partner-item">
+                    <img src="https://cdn.moveek.com/bundles/ornweb/partners/cinestar.png" alt="">
+                </li>
+                <li class="footer__partner-item">
+                    <img src="https://cdn.moveek.com/bundles/ornweb/partners/mega-gs-cinemas.png" alt="">
+                </li>
+                <li class="footer__partner-item">
+                    <img src="https://cdn.moveek.com/bundles/ornweb/partners/cinemax.png" alt="">
+                </li>
+                <li class="footer__partner-item">
+                    <img src="https://cdn.moveek.com/bundles/ornweb/partners/foxpay-icon.png" alt="">
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="./assets/js/buy-ticket.js"></script>
+    <script>
+        const handleActiveArea = (index) => {
+            $(`.main__content-area-item`).removeClass('active__content-item')
+            $(`.main__content-area-item:nth-child(${index})`).addClass('active__content-item')
+        }
+    </script>
+</body>
+
+</html>

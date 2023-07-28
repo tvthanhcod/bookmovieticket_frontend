@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVT - Movie Ticket Booking</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./assets/packs/jquery-3.7.0.min.js"></script>
+</head>
+<html>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header">
+                <ul class="header__nav">
+                    <li class="header__nav-item">
+                        <a href="buy-ticket.html">Mua vé</a>
+                    </li>
+                    <li class="header__nav-item"><a href="schedule.html">Lịch Chiếu</a></li>
+                    <li class="header__nav-item">
+                        <p>Phim</p>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </li>
+                    <li class="header__nav-item">
+                        <p>Rạp</p>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </li>
+                </ul>
+                <div class="header__logo">
+                    <a href="index.html">TVT Movie</a>
+                </div>
+                <div class="header__search">
+                    <div class="header__search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" class="header__search-input" placeholder="Từ khóa tìm kiếm...">
+                </div>
+                <!-- <a href="#" class="header-help">
+                        <div class="">
+                            <i class="fa-solid fa-question"></i>
+                        </div>
+                        <p>Hỗ Trợ</p>
+                    </a> -->
+                <div class="header__auth">
+                    <div class="">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="choose__seat-flow container">
+            <ul class="choose__seat-flow-list">
+                <li class="choose__seat-flow-item">
+                    <div class="">
+                        <p>
+                            <i class="fa-solid fa-grip"></i>
+                        </p>
+                        <p>Chọn Ghế</p>
+                    </div>
+                </li>
+                <i class="fa-solid fa-chevron-right choose__seat-right-icon"></i>
+                <li class="choose__seat-flow-item">
+                    <div class="">
+                        <p>
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </p>
+                        <p>Bắp Nước</p>
+                    </div>
+                </li>
+                <i class="fa-solid fa-chevron-right choose__seat-right-icon"></i>
+                <li class="choose__seat-flow-item">
+                    <div class="">
+                        <p>
+                            <i class="fa-solid fa-credit-card"></i>
+                        </p>
+                        <p>Thanh Toán</p>
+                    </div>
+                </li>
+                <i class="fa-solid fa-chevron-right choose__seat-right-icon"></i>
+                <li class="choose__seat-flow-item">
+                    <div class="">
+                        <p>
+                            <i class="fa-solid fa-inbox"></i>
+                        </p>
+                        <p>Thông Tin Vé</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="choose__seat-content container">
+            <aside class="choose__seat-content-left">
+                <ul class="choose__seat-content-left-note">
+                    <li class="choose__seat-content-left-note-item">
+                        <div class="standard"></div>
+                        <span>Standard</span>
+                    </li>
+                    <li class="choose__seat-content-left-note-item">
+                        <div class="vip"></div>
+                        <span>VIP</span>
+                    </li>
+                    <li class="choose__seat-content-left-note-item">
+                        <div class="couple"></div>
+                        <span>Couple</span>
+                    </li>
+                    <li class="choose__seat-content-left-note-item">
+                        <div class="your_choose"></div>
+                        <span>Ghế Bạn Chọn</span>
+                    </li>
+                    <li class="choose__seat-content-left-note-item">
+                        <div class="bought"></div>
+                        <span>Đã Bán</span>
+                    </li>
+                </ul>
+                <div class="choose__seat-content-left-main">
+                    <div class="choose__seat-content-left-main-screen">Màn Hình</div>
+                    <ul class="choose__seat-content-left-main-seat">
+
+                    </ul>
+                </div>
+            </aside>
+            <aside class="choose__seat-content-right">
+                <div class="choose__seat-content-right-preview">
+                    <h2 class="preview__movie-name">Thám Tử Lừng Danh Conan</h2>
+                    <p class="preview__theater">Beta Thanh Xuân</p>
+                    <p class="preview__schedule">Suất 08:30</p>
+                    <p class="preview__schedule">Phòng Chiếu P3 - Ghế...</p>
+                </div>
+                <div class="choose__seat-content-right-total">
+                    <div class="total__price">
+                        <p class="choose__seat-content-right-title">Tổng Đơn Hàng</p>
+                        <p class="choose__seat-content-right-content">0 đ</p>
+                    </div>
+                    <div class="total__time">
+                        <p class="choose__seat-content-right-title">Tổng Đơn Hàng</p>
+                        <p class="choose__seat-content-right-content">03:00</p>
+                    </div>
+                </div>
+                <button class="choose__seat-content-right-btn">Tiếp Tục</button>
+            </aside>
+        </section>
+    </main>
+    <script>
+        let html = ""
+        for (let i = 1; i <= 100; i++) {
+            if (i > 50 && i < 72) {
+                html += `<li class="choose__seat-content-left-main-seat-item vip">${i}</li>`
+            }
+            else if (i > 74 && i < 86) {
+                html += `<li class="choose__seat-content-left-main-seat-item bought">${i}</li>`
+            }
+            else if (i > 90 && i < 101) {
+                html += `<li class="choose__seat-content-left-main-seat-item couple">${i}</li>`
+            } else {
+                html += `<li class="choose__seat-content-left-main-seat-item standard">${i}</li>`
+            }
+        }
+        $('.choose__seat-content-left-main-seat').html(html)
+    </script>
+</body>
+
+</html>

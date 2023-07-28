@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVT - Movie Ticket Booking</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <script src="./assets/packs/jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+    <main class="login__container">
+        <div class="loading">
+            <div class="loader"></div>
+            <div class="loader2"></div>
+        </div>
+        <div class="login__box">
+            <h1 class="login__box-heading">Chào Mừng</h1>
+            <div class="login__box-form">
+                <div class="form__group">
+                    <input id="form__username" type="text" placeholder="Nhập Tài Khoản">
+                    <span class="error__label"></span>
+                </div>
+                <div class="form__group">
+                    <input id="form__password" type="password" placeholder="Nhập Mật Khẩu">
+                    <span class="error__label"></span>
+                </div>
+                <div class="form__group options">
+                    <input id="form__rememberpass" type="checkbox">
+                    <label for="form__rememberpass">Nhớ mật khẩu</label>
+                    <a id="forget-password" href="">Quên mật khẩu</a>
+                </div>
+            </div>
+            <button class="btn btn__login">Đăng Nhập</button>
+            <div class="login__box-register">
+                <span>Bạn chưa có tài khoản?</span>
+                <a href="register.html">Đăng ký ngay</a>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="./assets/js/main.js"></script>
+    <script src="./assets/utils/Validate.js"></script>
+    <script>
+        Validate({
+            form: '.login__box-form',
+            rules: [
+                Validate.isRequire('#form__username'),
+                Validate.isRequire('#form__password'),
+                Validate.isValidPasswordLength('#form__password')
+            ]
+        })
+    </script>
+</body>
+
+</html>
