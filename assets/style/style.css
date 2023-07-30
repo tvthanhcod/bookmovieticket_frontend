@@ -657,9 +657,13 @@ main .main__content .main__content-container .main__content-col-6 .main__content
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #edf2f9;
 }
-main .main__content .main__content-container .main__content-col-6 .main__content-showtime-date .main__content-showtime-date-list .main__content-showtime-date-item:first-child {
-  background-color: #c7ceec;
+main .main__content .main__content-container .main__content-col-6 .main__content-showtime-date .main__content-showtime-date-list .main__content-showtime-date-item:hover {
+  cursor: pointer;
+}
+main .main__content .main__content-container .main__content-col-6 .main__content-showtime-date .main__content-showtime-date-list .main__content-showtime-date-item.active__content-datetime {
+  background-color: #c7ceec !important;
 }
 main .main__content .main__content-container .main__content-col-6 .main__content-showtime-date .main__content-showtime-date-list .main__content-showtime-date-item p:first-child {
   color: #a1aac9;
@@ -718,6 +722,7 @@ main .main__content .main__content-container .main__content-col-6 .main__content
   object-fit: cover;
 }
 main .main__content .main__content-container .main__content-col-6 .main__content-showtime-list .main__content-showtime-item .main__content-showtime-item-option {
+  flex: 1;
   margin-left: 30px;
 }
 main .main__content .main__content-container .main__content-col-6 .main__content-showtime-list .main__content-showtime-item .main__content-showtime-item-option .main__content-showtime-item-name {

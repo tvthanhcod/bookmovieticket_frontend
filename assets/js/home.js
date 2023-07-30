@@ -59,20 +59,6 @@ const formatDate = (date) => {
     return `${date.getDate()}/${date.getMonth()}`.toString()
 }
 
-const dataFakeMovie = await $.ajax({
-    url: "http://localhost:8000/api/v1/movie",
-    method: "GET",
-    contentType: 'application/json',
-    success: (response) => {
-        return response
-    },
-
-    error: (xhr, status, error) => {
-        return error
-    }
-})
-
-
 const dataFakeBlog = [
     {
         title: "The Moon: Nhiệm Vụ Cuối Cùng - Bom tấn Hàn Quốc có D.O., Kim Hee Ae ra rạp Việt",
@@ -156,6 +142,60 @@ const dataFakeReview = [
         thumbnail: "https://cdn.moveek.com/storage/media/cache/small/64a87e58590cf468000271.jpg"
     },
 ]
+
+const homeBlogList = $('.home__blog-list')
+let blogData = ""
+dataFakeBlog.forEach(blog => {
+    blogData += `<li class="home__blog-item">
+                        <div class="home__blog-item-img">
+                            <img src="${blog.thumbnail}"
+                                alt="">
+                        </div>
+                        <div class="home__blog-item-content">
+                            <h3>${blog.title}</h3>
+                            <p>
+                                <a href="#">${blog.typeBlog}</a> <span> . </span>
+                                <a href="#">${blog.userPost}</a> <span> . </span>
+                                <time datetime="">${blog.time}</time>
+                            </p>
+                            <p>${blog.description}</p>
+                        </div>
+                    </li>`
+})
+homeBlogList.html(blogData)
+
+const homeReviewList = $('.home__review-list')
+let reviewData = ""
+dataFakeReview.forEach(review => {
+    reviewData += `<li class="home__review-item">
+                        <div class="home__review-item-img">
+                            <img src="${review.thumbnail}"
+                                alt="">
+                        </div>
+                        <div class="home__review-item-content">
+                            <h3>${review.title}</h3>
+                            <p>
+                                <a href="#">${review.userPost}</a> <span> . </span>
+                                <time datetime="">${review.time}</time>
+                            </p>
+                        </div>
+                    </li>`
+})
+homeReviewList.html(reviewData)
+
+const dataFakeMovie = await $.ajax({
+    url: "http://localhost:8000/api/v1/movie",
+    method: "GET",
+    contentType: 'application/json',
+    success: (response) => {
+        return response
+    },
+
+    error: (xhr, status, error) => {
+        return error
+    }
+})
+
 // const TOTAL_NUMBER_ITEM = dataFakeMovie.length
 const TOTAL_NUMBER_ITEM = dataFakeMovie.length
 const NUMBER_DOT = Math.ceil(TOTAL_NUMBER_ITEM / NUMBER_ITEM_IN_PAGE)
@@ -199,44 +239,5 @@ for (let i = 0; i < NUMBER_DOT; i++) {
 sliderDots.html(addDot)
 
 
-const homeBlogList = $('.home__blog-list')
-let blogData = ""
-dataFakeBlog.forEach(blog => {
-    blogData += `<li class="home__blog-item">
-                        <div class="home__blog-item-img">
-                            <img src="${blog.thumbnail}"
-                                alt="">
-                        </div>
-                        <div class="home__blog-item-content">
-                            <h3>${blog.title}</h3>
-                            <p>
-                                <a href="#">${blog.typeBlog}</a> <span> . </span>
-                                <a href="#">${blog.userPost}</a> <span> . </span>
-                                <time datetime="">${blog.time}</time>
-                            </p>
-                            <p>${blog.description}</p>
-                        </div>
-                    </li>`
-})
-homeBlogList.html(blogData)
-
-const homeReviewList = $('.home__review-list')
-let reviewData = ""
-dataFakeReview.forEach(review => {
-    reviewData += `<li class="home__review-item">
-                        <div class="home__review-item-img">
-                            <img src="${review.thumbnail}"
-                                alt="">
-                        </div>
-                        <div class="home__review-item-content">
-                            <h3>${review.title}</h3>
-                            <p>
-                                <a href="#">${review.userPost}</a> <span> . </span>
-                                <time datetime="">${review.time}</time>
-                            </p>
-                        </div>
-                    </li>`
-})
-homeReviewList.html(reviewData)
 
 

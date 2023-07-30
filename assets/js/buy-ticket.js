@@ -65,8 +65,6 @@ sliderDots.html(addDot)
 
 
 
-// handle buy ticket by theater
-const showtimeDateList = $('.main__content-showtime-date .main__content-showtime-date-list')
 // function get number next day
 const getNextNDays = (startDate, n) => {
     const nextDays = [];
@@ -90,26 +88,76 @@ const getDayOfWeek = (date) => {
     return daysOfWeek[dayIndex];
 }
 
-const newNextDays = nextDays.map(date => {
-    const month = date.getMonth() + 1
-    const day = date.getDate()
-    const dayofweek = getDayOfWeek(date)
-    return {
-        month,
-        day,
-        dayofweek
+
+const handleDateItemClick = (dateInfo, index) => {
+    $('.main__content-showtime-date .main__content-showtime-date-list .main__content-showtime-date-item').removeClass('active__content-datetime')
+    $(`.main__content-showtime-date .main__content-showtime-date-list .main__content-showtime-date-item:nth-child(${index + 1})`).addClass('active__content-datetime')
+    const objectreq = JSON.parse(localStorage.getItem('objectreq'))
+    if (!objectreq) {
+        const requestApi = {}
+        requestApi['date_pick'] = dateInfo['date']
+        if (requestApi['date_pick']) {
+            localStorage.setItem('objectreq', JSON.stringify(requestApi))
+        }
+    } else {
+        const newObj = { ...objectreq, date_pick: dateInfo['date'] }
+        localStorage.setItem('objectreq', JSON.stringify(newObj))
+        const newDataFromlocalStorage = JSON.parse(localStorage.getItem('objectreq'))
+        if (newDataFromlocalStorage['theater_id'] && newDataFromlocalStorage['date_pick']) {
+            const formatDate = (date) => {
+                return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`.toString()
+            }
+            const thearterId = newDataFromlocalStorage['theater_id']
+            const newDate = new Date(newDataFromlocalStorage['date_pick'])
+            const datePick = formatDate(newDate)
+            $.ajax({
+                url: `http://localhost:8000/api/v1/theater/detail/${thearterId}/${datePick}`,
+                method: 'GET',
+                contentType: 'application/json',
+                success: (response) => {
+                    renderShowtime(response)
+                },
+
+                error: (status, error) => {
+
+                }
+            })
+        } else {
+            renderShowtime()
+        }
     }
-})
+}
+
 
 // html showtime date
-let htmlshowtimedates = ""
-newNextDays.forEach((item => {
-    htmlshowtimedates += `<li class="main__content-showtime-date-item">
+{
+    const newNextDays = nextDays.map(date => {
+        const month = date.getMonth() + 1
+        const day = date.getDate()
+        const dayofweek = getDayOfWeek(date)
+        return {
+            date,
+            month,
+            day,
+            dayofweek
+        }
+    })
+    const showtimeDateList = $('.main__content-showtime-date .main__content-showtime-date-list')
+    let htmlshowtimedates = ""
+    newNextDays.forEach((item => {
+        htmlshowtimedates += `<li class="main__content-showtime-date-item">
                                 <p>${item.day}/${item.month}</p>
                                 <p>${item.dayofweek}</p>
                             </li>`
-}))
-showtimeDateList.html(htmlshowtimedates)
+    }))
+    showtimeDateList.html(htmlshowtimedates)
+    $('.main__content-showtime-date .main__content-showtime-date-list .main__content-showtime-date-item').on('click', function () {
+        const index = $(this).index();
+        handleDateItemClick(newNextDays[index], index);
+
+    })
+}
+
 
 
 // handle area theater
@@ -127,7 +175,99 @@ const areas = await $.ajax({
     }
 })
 
+const renderShowtime = (dataDetail) => {
+
+    const format = (starTime) => {
+        const formatStartTime = starTime.split(':').map(value => value)
+        const result = `${formatStartTime[0]}:${formatStartTime[1]}`
+        return result
+    }
+    const mainContentShowtimeList = $('.main__content-showtime-list')
+    let htmlShowtime = ""
+    const movieIds = []
+    const showtimeIds = []
+    if (dataDetail) {
+        dataDetail.data.forEach((item) => {
+            htmlShowtime += `<li class="main__content-showtime-item">
+                            <div class="main__content-showtime-item-thumbnail">
+                                <img src="${item.thumbnail}"
+                                    alt="">
+                            </div>
+                            <div class="main__content-showtime-item-option">
+                                <h3 class="main__content-showtime-item-name">
+                                    ${item.title}
+                                </h3>
+                                <p class="main__content-showtime-item-duration">Thời Lượng Phim: 1h50</p>
+                                <ul class="main__content-showtime-item-taglist">
+                                    ${item.data.map(item => {
+                movieIds.push(item.movie_id)
+                return item.data_detail.map(movie => {
+                    showtimeIds.push(movie.showtime_id)
+                    return `<li class="main__content-showtime-item-tag">${format(movie.start_time)}</li>`
+                }).join(" ")
+            }).join(" ")}
+                                </ul>
+                            </div>
+                        </li>`
+        })
+
+        mainContentShowtimeList.html(htmlShowtime)
+    }
+    mainContentShowtimeList.html(htmlShowtime)
+    $('.main__content-showtime-item-option .main__content-showtime-item-taglist .main__content-showtime-item-tag').on('click', function () {
+        console.log(1)
+        const index = $(this).index()
+        const showtimeId = showtimeIds[index]
+        const showtimeIdFromLocalstorage = JSON.parse(localStorage.getItem('objecTicket'))
+        if (showtimeIdFromLocalstorage) {
+            localStorage.clear('objecTicket')
+        } else {
+            const objecTicket = {}
+            objecTicket['showtimeId'] = showtimeId
+            localStorage.setItem('objecTicket', JSON.stringify(objecTicket))
+            location.href = "http://127.0.0.1:5500/choose-seat.html"
+        }
+    })
+
+}
+
+const handleActiveContentTheaterItem = (theater, index) => {
+    $('.main__content-showtime-date .main__content-showtime-date-list .main__content-showtime-date-item').removeClass('active__content-datetime')
+    renderShowtime()
+    $('.main__content-theater .main__content-theater-list .main__content-theater-item').removeClass('active__content-item')
+    $(`.main__content-theater .main__content-theater-list .main__content-theater-item:nth-child(${index + 1})`).addClass('active__content-item')
+    const objectreq = JSON.parse(localStorage.getItem('objectreq'))
+    if (!objectreq) {
+        const requestApi = {}
+        requestApi['theater_id'] = theater['_id']
+        if (requestApi['theater_id']) {
+            localStorage.setItem('objectreq', JSON.stringify(requestApi))
+        }
+    } else {
+        const newObj = { ...objectreq, theater_id: theater['_id'] }
+        localStorage.setItem('objectreq', JSON.stringify(newObj))
+    }
+}
+
+//function render theater from area
+const renderTheater = (dataTheater) => {
+    const mainContentTheaterList = $('.main__content-theater .main__content-theater-list')
+    let htmlTheater = `<li class="main__content-col-2-item main__content-theater-item">Rạp Phim</li>`
+    dataTheater.forEach(value => {
+        htmlTheater += `<li class="main__content-col-2-item main__content-theater-item">${value.name}</li>`
+    })
+
+    mainContentTheaterList.html(htmlTheater)
+
+    $('.main__content-theater .main__content-theater-list .main__content-theater-item').on('click', function () {
+        const index = $(this).index();
+        handleActiveContentTheaterItem(dataTheater[index - 1], index);
+    });
+}
+
 const handleActiveContentAreaItem = (area, index) => {
+    $('.main__content-showtime-date .main__content-showtime-date-list .main__content-showtime-date-item').removeClass('active__content-datetime')
+    renderShowtime()
     $('.main__content-area .main__content-area-list .main__content-area-item').removeClass('active__content-item')
     $(`.main__content-area .main__content-area-list .main__content-area-item:nth-child(${index + 1})`).addClass('active__content-item')
     $.ajax({
@@ -135,17 +275,11 @@ const handleActiveContentAreaItem = (area, index) => {
         metthod: "GET",
 
         success: (response) => {
-            const mainContentTheaterList = $('.main__content-theater .main__content-theater-list')
-            let htmlTheater = `<li class="main__content-col-2-item main__content-area-item">Rạp Phim</li>`
-            response.forEach(value => {
-                htmlTheater += `<li class="main__content-col-2-item main__content-theater-item">${value.name}</li>`
-            })
-
-            mainContentTheaterList.html(htmlTheater)
+            renderTheater(response)
         },
 
-        error: () => {
-
+        error: (error) => {
+            // handle Toast error
         }
     })
 }

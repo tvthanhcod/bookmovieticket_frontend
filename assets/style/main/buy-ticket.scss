@@ -123,9 +123,14 @@ main {
                             flex-direction: column;
                             justify-content: center;
                             align-items: center;
+                            background-color: #edf2f9;
 
-                            &:first-child {
-                                background-color: #c7ceec;
+                            &:hover {
+                                cursor: pointer;
+                            }
+
+                            &.active__content-datetime {
+                                background-color: #c7ceec !important;
                             }
 
                             & p:first-child {
@@ -195,6 +200,7 @@ main {
                         }
 
                         .main__content-showtime-item-option {
+                            flex: 1;
                             margin-left: 30px;
 
                             .main__content-showtime-item-name {
