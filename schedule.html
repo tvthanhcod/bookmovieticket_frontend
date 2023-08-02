@@ -234,7 +234,8 @@
             </ul>
         </div>
     </footer>
-    <script src="./assets/js/buy-ticket.js"></script>
+    <script type="module" src="./assets/utils/loadCurrentUser.js"></script>
+    <script type="module" src="./assets/js/buy-ticket.js"></script>
     <script>
         const handleActiveArea = (index) => {
             $(`.main__content-area-item`).removeClass('active__content-item')

@@ -410,10 +410,10 @@ header .header .header__auth .header__auth-nameuser span:first-child {
 header .header .header__auth .header__auth-nameuser span:first-child::before {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 100px;
   height: 10px;
   top: 100%;
-  left: 0;
+  right: 0;
   background-color: transparent;
 }
 header .header .header__auth .header__auth-nameuser .header__auth-content {
@@ -1078,6 +1078,51 @@ main .choose__seat-content .choose__seat-content-left .choose__seat-content-left
   top: 0;
   left: 0;
 }
+main .choose__seat-content .choose__seat-content-left .choose__seat-content-left-main .choose__seat-content-left-main-seat .choose__seat-content-left-main-seat-item.standard::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #f1f1f1;
+  top: 0;
+  left: 0;
+}
+main .choose__seat-content .choose__seat-content-left .choose__seat-content-left-main .choose__seat-content-left-main-seat .choose__seat-content-left-main-seat-item.vip::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #d4b15f;
+  top: 0;
+  left: 0;
+}
+main .choose__seat-content .choose__seat-content-left .choose__seat-content-left-main .choose__seat-content-left-main-seat .choose__seat-content-left-main-seat-item.bought::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #db0000;
+  top: 0;
+  left: 0;
+}
+main .choose__seat-content .choose__seat-content-left .choose__seat-content-left-main .choose__seat-content-left-main-seat .choose__seat-content-left-main-seat-item.couple::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: purple;
+  top: 0;
+  left: 0;
+}
+main .choose__seat-content .choose__seat-content-left .choose__seat-content-left-main .choose__seat-content-left-main-seat .choose__seat-content-left-main-seat-item.standard.your_choose::before, main .choose__seat-content .choose__seat-content-left .choose__seat-content-left-main .choose__seat-content-left-main-seat .choose__seat-content-left-main-seat-item.vip.your_choose::before, main .choose__seat-content .choose__seat-content-left .choose__seat-content-left-main .choose__seat-content-left-main-seat .choose__seat-content-left-main-seat-item.bought.your_choose::before, main .choose__seat-content .choose__seat-content-left .choose__seat-content-left-main .choose__seat-content-left-main-seat .choose__seat-content-left-main-seat-item.couple.your_choose::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  top: 0;
+  left: 0;
+}
 main .choose__seat-content .choose__seat-content-left .choose__seat-content-left-main .choose__seat-content-left-main-seat .choose__seat-content-left-main-seat-item:hover:before {
   background-color: rgba(241, 241, 241, 0);
 }
@@ -1187,11 +1232,16 @@ main .slider__movie .silder__movie-content .slider__movie-list .slider__movie-it
   width: 118px;
   height: 177px;
   position: relative;
+  overflow: hidden;
 }
 main .slider__movie .silder__movie-content .slider__movie-list .slider__movie-item .slider__movie-card .slider__movie-card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: all 0.2s linear;
+}
+main .slider__movie .silder__movie-content .slider__movie-list .slider__movie-item .slider__movie-card .slider__movie-card-img img:hover {
+  transform: scale(115%);
 }
 main .slider__movie .silder__movie-content .slider__movie-list .slider__movie-item .slider__movie-card .slider__movie-card-img .slider__movie-card-img-tag {
   position: absolute;

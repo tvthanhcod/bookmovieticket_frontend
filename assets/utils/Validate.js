@@ -1,4 +1,3 @@
-
 const Validate = (options) => {
     const selectorRules = {}
     const formElement = $(options.form)

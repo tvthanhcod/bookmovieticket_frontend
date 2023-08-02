@@ -127,10 +127,10 @@ header {
                     &::before {
                         content: "";
                         position: absolute;
-                        width: 100%;
+                        width: 100px;
                         height: 10px;
                         top: 100%;
-                        left: 0;
+                        right: 0;
                         background-color: transparent;
                     }
                 }

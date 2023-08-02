@@ -1,4 +1,4 @@
-import { eraseCookie, getCookie, setCookie } from "./cookie.js"
+import { eraseCookie, getCookie, setCookie } from "./cookieMethods.js"
 
 const accessToken = getCookie("accessToken")
 const refreshToken = getCookie("refreshToken")

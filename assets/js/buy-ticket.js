@@ -184,10 +184,15 @@ const renderShowtime = (dataDetail) => {
     }
     const mainContentShowtimeList = $('.main__content-showtime-list')
     let htmlShowtime = ""
-    const movieIds = []
-    const showtimeIds = []
+    const movieNames = {}
+    const showtimeObjects = []
     if (dataDetail) {
         dataDetail.data.forEach((item) => {
+            item.data.forEach(data => {
+                data.data_detail.forEach(dataDetail => {
+                    movieNames[`${dataDetail.showtime_id}`] = item.title
+                })
+            })
             htmlShowtime += `<li class="main__content-showtime-item">
                             <div class="main__content-showtime-item-thumbnail">
                                 <img src="${item.thumbnail}"
@@ -200,9 +205,8 @@ const renderShowtime = (dataDetail) => {
                                 <p class="main__content-showtime-item-duration">Thời Lượng Phim: 1h50</p>
                                 <ul class="main__content-showtime-item-taglist">
                                     ${item.data.map(item => {
-                movieIds.push(item.movie_id)
                 return item.data_detail.map(movie => {
-                    showtimeIds.push(movie.showtime_id)
+                    showtimeObjects.push(movie)
                     return `<li class="main__content-showtime-item-tag">${format(movie.start_time)}</li>`
                 }).join(" ")
             }).join(" ")}
@@ -215,17 +219,39 @@ const renderShowtime = (dataDetail) => {
     }
     mainContentShowtimeList.html(htmlShowtime)
     $('.main__content-showtime-item-option .main__content-showtime-item-taglist .main__content-showtime-item-tag').on('click', function () {
-        console.log(1)
         const index = $(this).index()
-        const showtimeId = showtimeIds[index]
+        const showtimeId = showtimeObjects[index].showtime_id
+        const nameMovie = movieNames[showtimeId]
         const showtimeIdFromLocalstorage = JSON.parse(localStorage.getItem('objecTicket'))
         if (showtimeIdFromLocalstorage) {
             localStorage.clear('objecTicket')
+            const objecTicket = {}
+            objecTicket['showtimeId'] = showtimeId
+            localStorage.setItem('objecTicket', JSON.stringify(objecTicket))
+            const infoObjectBookTicket = {
+                movie: nameMovie,
+                theater_id: dataDetail.theater_id,
+                theater_name: dataDetail.theater_name,
+                showtime_id: showtimeObjects[index].showtime_id,
+                room_id: showtimeObjects[index].room_id,
+                showtime: showtimeObjects[index].start_time,
+            }
+            localStorage.setItem('infoObjectBookTicket', JSON.stringify(infoObjectBookTicket))
+            location.href = `http://127.0.0.1:5500/choose-seat.html`
         } else {
             const objecTicket = {}
             objecTicket['showtimeId'] = showtimeId
             localStorage.setItem('objecTicket', JSON.stringify(objecTicket))
-            location.href = "http://127.0.0.1:5500/choose-seat.html"
+            const infoObjectBookTicket = {
+                movie: nameMovie,
+                theater_id: dataDetail.theater_id,
+                theater_name: dataDetail.theater_name,
+                showtime_id: showtimeObjects[index].showtime_id,
+                room_id: showtimeObjects[index].room_id,
+                showtime: showtimeObjects[index].start_time,
+            }
+            localStorage.setItem('infoObjectBookTicket', JSON.stringify(infoObjectBookTicket))
+            location.href = `http://127.0.0.1:5500/choose-seat.html`
         }
     })
 
@@ -301,5 +327,34 @@ if (Array.isArray(areas)) {
         handleActiveContentAreaItem(areas[index - 1], index);
     });
 }
+
+{
+    let i = 0
+    const autoNextSlide = () => {
+
+        const breakInterval = (timerId, i) => {
+            if (i >= NUMBER_DOT) {
+                clearInterval(timerId)
+            }
+        }
+
+        const receiveI = (i) => {
+            breakInterval(timerId, i)
+        }
+
+        const timerId = setInterval(function () {
+            $('.slider__movie-dot-item').removeClass('active-dot')
+            $(`.slider__movie-dot-item:nth-child(${i + 1})`).addClass('active-dot !important')
+            $('.slider__movie-list').css('transform', `translateX(-${(i) * WIDTH_SLIDERITEM}px)`)
+            i++
+            receiveI(i)
+        }, 1000)
+
+        return timerId
+    }
+
+    autoNextSlide()
+}
+
 
 

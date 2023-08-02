@@ -121,6 +121,7 @@ main {
                         background-color: #f1f1f1;
                         cursor: pointer;
 
+
                         &.standard::before {
                             content: "";
                             position: absolute;
@@ -157,6 +158,59 @@ main {
                             width: 100%;
                             height: 100%;
                             background-color: purple;
+                            top: 0;
+                            left: 0;
+                        }
+
+                        &.standard::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background-color: #f1f1f1;
+                            top: 0;
+                            left: 0;
+                        }
+
+                        &.vip::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background-color: #d4b15f;
+                            top: 0;
+                            left: 0;
+                        }
+
+                        &.bought::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background-color: #db0000;
+                            top: 0;
+                            left: 0;
+                        }
+
+                        &.couple::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background-color: purple;
+                            top: 0;
+                            left: 0;
+                        }
+
+                        &.standard.your_choose::before,
+                        &.vip.your_choose::before,
+                        &.bought.your_choose::before,
+                        &.couple.your_choose::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background-color: green;
                             top: 0;
                             left: 0;
                         }

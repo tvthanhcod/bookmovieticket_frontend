@@ -127,10 +127,10 @@
             </aside>
             <aside class="choose__seat-content-right">
                 <div class="choose__seat-content-right-preview">
-                    <h2 class="preview__movie-name">Thám Tử Lừng Danh Conan</h2>
+                    <!-- <h2 class="preview__movie-name">Thám Tử Lừng Danh Conan</h2>
                     <p class="preview__theater">Beta Thanh Xuân</p>
                     <p class="preview__schedule">Suất 08:30</p>
-                    <p class="preview__schedule">Phòng Chiếu P3 - Ghế...</p>
+                    <p class="preview__schedule">Phòng Chiếu P3 - Ghế...</p> -->
                 </div>
                 <div class="choose__seat-content-right-total">
                     <div class="total__price">
@@ -146,23 +146,8 @@
             </aside>
         </section>
     </main>
-    <script>
-        let html = ""
-        for (let i = 1; i <= 100; i++) {
-            if (i > 50 && i < 72) {
-                html += `<li class="choose__seat-content-left-main-seat-item vip">${i}</li>`
-            }
-            else if (i > 74 && i < 86) {
-                html += `<li class="choose__seat-content-left-main-seat-item bought">${i}</li>`
-            }
-            else if (i > 90 && i < 101) {
-                html += `<li class="choose__seat-content-left-main-seat-item couple">${i}</li>`
-            } else {
-                html += `<li class="choose__seat-content-left-main-seat-item standard">${i}</li>`
-            }
-        }
-        $('.choose__seat-content-left-main-seat').html(html)
-    </script>
+    <script type="module" src="./assets/utils/loadCurrentUser.js"></script>
+    <script type="module" src="./assets/js/choose-seat.js"></script>
 </body>
 
 </html>

@@ -203,7 +203,7 @@ let movieData = ""
 dataFakeMovie.forEach(movie => {
     const newDateFromCreateAt = new Date(movie.createAt)
     const timeMovieUpdateSystem = formatDate(newDateFromCreateAt)
-    movieData += `<li class="slider__movie-item">
+    movieData += `<li class="slider__movie-item" onclick=" window.location.href = 'http://localhost:5500/book-movie-detail.html?movieid=${movie._id}' ">
                         <article class="slider__movie-card">
                             <div class="slider__movie-card-img">
                                 <img src="${movie.thumbnail}"
@@ -237,6 +237,34 @@ for (let i = 0; i < NUMBER_DOT; i++) {
 }
 
 sliderDots.html(addDot)
+
+{
+    let i = 0
+    const autoNextSlide = () => {
+
+        const breakInterval = (timerId, i) => {
+            if (i >= NUMBER_DOT) {
+                clearInterval(timerId)
+            }
+        }
+
+        const receiveI = (i) => {
+            breakInterval(timerId, i)
+        }
+
+        const timerId = setInterval(function () {
+            $('.slider__movie-dot-item').removeClass('active-dot')
+            $(`.slider__movie-dot-item:nth-child(${i + 1})`).addClass('active-dot !important')
+            $('.slider__movie-list').css('transform', `translateX(-${(i) * WIDTH_SLIDERITEM}px)`)
+            i++
+            receiveI(i)
+        }, 1000)
+
+        return timerId
+    }
+
+    autoNextSlide()
+}
 
 
 

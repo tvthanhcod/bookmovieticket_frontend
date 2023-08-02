@@ -20,7 +20,7 @@ const getCookie = (cname) => {
     }
     return "";
 }
-function eraseCookie(name) {
+const eraseCookie = (name) => {
     document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
